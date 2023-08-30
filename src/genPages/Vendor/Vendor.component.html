@@ -1,0 +1,267 @@
+<p-toast></p-toast>
+<div class="card">
+    <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+<!--    <p-table #dt [value]="VendorData" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"-->
+<!--        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"-->
+<!--        [globalFilterFields]="['vendorId','vendorName','address','city','country','notes',]"-->
+<!--             [loading]="isDataLoading"  >-->
+<!--        <ng-template pTemplate="caption">-->
+<!--            <div class="flex flex-wrap gap-2 align-items-center justify-content-between">-->
+<!--                <span class="p-input-icon-left w-full sm:w-20rem flex-order-1 sm:flex-order-0">-->
+<!--                    <i class="pi pi-search"></i>-->
+<!--                    <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Vendor Search" class="w-full" />-->
+<!--                </span>-->
+<!--                <button (click)="showCreateVendorDialog()" pButton class="p-button-outlined w-full sm:w-auto flex-order-0 sm:flex-order-1" icon="pi pi-plus" label="Add Vendor"></button>-->
+<!--            </div>-->
+<!--        </ng-template>-->
+<!--        <ng-template pTemplate="header">-->
+<!--            <tr>-->
+<!--                <th pSortableColumn="vendorId" class="white-space-nowrap" style="width:35%">Vendorid<p-sortIcon field="vendorId"></p-sortIcon></th>-->
+<!--<th pSortableColumn="vendorName" class="white-space-nowrap" style="width:35%">Vendorname<p-sortIcon field="vendorName"></p-sortIcon></th>-->
+<!--<th pSortableColumn="address" class="white-space-nowrap" style="width:35%">Address<p-sortIcon field="address"></p-sortIcon></th>-->
+<!--<th pSortableColumn="city" class="white-space-nowrap" style="width:35%">City<p-sortIcon field="city"></p-sortIcon></th>-->
+<!--<th pSortableColumn="country" class="white-space-nowrap" style="width:35%">Country<p-sortIcon field="country"></p-sortIcon></th>-->
+<!--<th pSortableColumn="notes" class="white-space-nowrap" style="width:35%">Notes<p-sortIcon field="notes"></p-sortIcon></th>-->
+
+<!--                <th  class="white-space-nowrap" style="width:25%">Action</th>-->
+<!--            </tr>-->
+<!--        </ng-template>-->
+<!--        <ng-template pTemplate="body" let-VendorData>-->
+<!--            <tr>-->
+<!--                <td style="width:16%; min-width:10rem;">-->
+<!--{{VendorData.vendorId}} -->
+<!--</td>-->
+<!--<td style="width:16%; min-width:10rem;">-->
+<!--{{VendorData.vendorName}} -->
+<!--</td>-->
+<!--<td style="width:16%; min-width:10rem;">-->
+<!--{{VendorData.address}} -->
+<!--</td>-->
+<!--<td style="width:16%; min-width:10rem;">-->
+<!--{{VendorData.city}} -->
+<!--</td>-->
+<!--<td style="width:16%; min-width:10rem;">-->
+<!--{{VendorData.country}} -->
+<!--</td>-->
+<!--<td style="width:16%; min-width:10rem;">-->
+<!--{{VendorData.notes}} -->
+<!--</td>-->
+
+<!--                <td>-->
+<!--                    <div class="flex">-->
+
+<!--                        <button pButton pRipple icon="pi pi-pencil"-->
+<!--                                class="p-button-rounded p-button-primary mr-2" pTooltip="Edit"-->
+<!--                                (click)="showEditVendorDialog(VendorData)"></button>-->
+
+<!--                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"-->
+<!--                             (click)="deleteVendor(VendorData)"   pTooltip="Delete"></button>-->
+<!--                    </div>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--        </ng-template>-->
+<!--    </p-table>-->
+<!--</div>-->
+    <p-table #dt [value]="VendorData" selectionMode="single" [(selection)]="selectedRow"  [expandedRowKeys]="expandedRows"  [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll" dataKey="warehouseId" [tableStyle]="{ 'min-width': '60rem' }"    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
+             [globalFilterFields]="['warehouseId','warehouseName','totalSpaceSQFT','location','floors','floorId','zoneLocation','demandLevel']"
+             [loading]="isDataLoading">
+        <ng-template pTemplate="caption">
+            <div class="flex flex-wrap gap-2 align-items-center justify-content-between">
+                <span class="p-input-icon-left w-full sm:w-20rem flex-order-1 sm:flex-order-0">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Vendor Search" class="w-full" />
+                </span>
+                <div>
+                    <button pButton icon="pi pi-fw {{isExpanded ? 'pi-minus' : 'pi-plus'}}" label="{{isExpanded ? 'Collapse All' : 'Expand All'}}" (click)="expandAll()"></button>
+                    <button (click)="showCreateVendorDialog()" pButton class="p-button-outlined  ml-3 w-full sm:w-auto flex-order-0 sm:flex-order-1" icon="pi pi-plus" label="Add Vendor"></button>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+<!--            <tr>-->
+<!--                <th style="width: 5rem"></th>-->
+<!--                <th pSortableColumn="warehouseId" class="white-space-nowrap" style="width:35%">Warehouse Id<p-sortIcon field="warehouseId"></p-sortIcon></th>-->
+<!--                <th pSortableColumn="warehouseName" class="white-space-nowrap" style="width:35%">Warehouse Name<p-sortIcon field="warehouseName"></p-sortIcon></th>-->
+<!--                <th pSortableColumn="totalSpaceSQFT" class="white-space-nowrap" style="width:35%">Total Space sqft<p-sortIcon field="totalSpaceSQFT"></p-sortIcon></th>-->
+<!--                <th pSortableColumn="location" class="white-space-nowrap" style="width:35%">Location<p-sortIcon field="location"></p-sortIcon></th>-->
+<!--                <th pSortableColumn="floors" class="white-space-nowrap" style="width:35%">Floors<p-sortIcon field="floors"></p-sortIcon></th>-->
+
+<!--                <th  class="white-space-nowrap" >Action</th>-->
+<!--            </tr>-->
+
+                        <tr>
+                            <th style="width: 5rem"></th>
+                            <th pSortableColumn="vendorId" class="white-space-nowrap" style="width:35%">Vendorid<p-sortIcon field="vendorId"></p-sortIcon></th>
+            <th pSortableColumn="vendorName" class="white-space-nowrap" style="width:35%">Vendorname<p-sortIcon field="vendorName"></p-sortIcon></th>
+            <th pSortableColumn="address" class="white-space-nowrap" style="width:35%">Address<p-sortIcon field="address"></p-sortIcon></th>
+            <th pSortableColumn="city" class="white-space-nowrap" style="width:35%">City<p-sortIcon field="city"></p-sortIcon></th>
+            <th pSortableColumn="country" class="white-space-nowrap" style="width:35%">Country<p-sortIcon field="country"></p-sortIcon></th>
+            <th pSortableColumn="notes" class="white-space-nowrap" style="width:35%">Notes<p-sortIcon field="notes"></p-sortIcon></th>
+
+                            <th  class="white-space-nowrap" style="width:25%">Action</th>
+                        </tr>
+
+        </ng-template>
+        <ng-template pTemplate="body" let-VendorData let-expanded="expanded">
+            <tr  [pSelectableRow]="VendorData" [pRowToggler]="VendorData" >
+                <td>
+                    <button type="button" pButton pRipple  class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'" ></button>
+                </td>
+                <td style="width:20%; min-width:10rem;">
+                    {{VendorData.vendorId}}
+
+
+                </td>
+<!--                <td style="width:20%; min-width:10rem;">-->
+<!--                    {{WarehouseData.warehouseName}}-->
+<!--                </td>-->
+<!--                <td style="width:20%; min-width:10rem;">-->
+<!--                    {{WarehouseData.totalSpaceSQFT}}-->
+<!--                </td>-->
+<!--                <td style="width:20%; min-width:10rem;">-->
+<!--                    {{WarehouseData.location}}-->
+<!--                </td>-->
+<!--                <td style="width:20%; min-width:10rem;">-->
+<!--                    {{WarehouseData.floors}}-->
+<!--                </td>-->
+
+
+                <td style="width:16%; min-width:10rem;">
+                {{VendorData.vendorName}}
+                </td>
+                <td style="width:16%; min-width:10rem;">
+                {{VendorData.address}}
+                </td>
+                <td style="width:16%; min-width:10rem;">
+                {{VendorData.city}}
+                </td>
+                <td style="width:16%; min-width:10rem;">
+                {{VendorData.country}}
+                </td>
+                <td style="width:16%; min-width:10rem;">
+                {{VendorData.notes}}
+                </td>
+
+                <td>
+                    <div class="flex">
+
+
+                        <button pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-warning mr-2"
+                                pTooltip="Inventory" label="Product"
+                                (click)="showCreateVendorproductsDialog(VendorData)"></button>
+                        <button pButton pRipple icon="pi pi-pencil"
+                                class="p-button-rounded p-button-primary mr-2" pTooltip="Edit"
+                                (click)="showEditVendorDialog(VendorData)"></button>
+
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                (click)="deleteVendor(VendorData)"   pTooltip="Delete"></button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="rowexpansion" let-VendorData>
+            <tr>
+                <td colspan="12">
+                    <div class="">
+                        <p-table [value]="VendorData.vendorProduct" dataKey="vendorProductsId"   [loading]="isDataLoading2">
+                            <ng-template pTemplate="header">
+<!--            <tr>-->
+<!--                &lt;!&ndash;                <th pSortableColumn="id">Zone Id <p-sortIcon field="price"></p-sortIcon></th>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <th pSortableColumn="customer">Floor Id <p-sortIcon field="customer"></p-sortIcon></th>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <th pSortableColumn="date">Zone Location <p-sortIcon field="date"></p-sortIcon></th>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <th pSortableColumn="amount">Amount <p-sortIcon field="amount"></p-sortIcon></th>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <th pSortableColumn="status">Demand Level <p-sortIcon field="status"></p-sortIcon></th>&ndash;&gt;-->
+<!--                <th pSortableColumn="zoneId" class="white-space-nowrap" style="width:35%">Zone Id<p-sortIcon field="zoneId"></p-sortIcon></th>-->
+<!--                <th pSortableColumn="floorId" class="white-space-nowrap" style="width:35%">Floor Id<p-sortIcon field="floorId"></p-sortIcon></th>-->
+<!--                <th pSortableColumn="zoneLocation" class="white-space-nowrap" style="width:35%">Zone Location<p-sortIcon field="zoneLocation"></p-sortIcon></th>-->
+<!--                <th pSortableColumn="demandLevel" class="white-space-nowrap" style="width:35%">Demand Level<p-sortIcon field="demandLevel"></p-sortIcon></th>-->
+<!--                <th pSortableColumn="width" class="white-space-nowrap" style="width:35%">Width<p-sortIcon field="width"></p-sortIcon></th>-->
+<!--                <th pSortableColumn="length" class="white-space-nowrap" style="width:35%">Length<p-sortIcon field="length"></p-sortIcon></th>-->
+
+<!--                <th  class="white-space-nowrap" style="width:25%">Action</th>-->
+<!--                <th style="width: 4rem"></th>-->
+<!--            </tr>-->
+
+            <tr>
+                <th pSortableColumn="vendorId" class="white-space-nowrap" style="width:35%">Vendor ID<p-sortIcon field="vendorId"></p-sortIcon></th>
+                <th pSortableColumn="productId" class="white-space-nowrap" style="width:35%">Product ID<p-sortIcon field="productId"></p-sortIcon></th>
+                <th pSortableColumn="unitPrice" class="white-space-nowrap" style="width:35%">Unitprice<p-sortIcon field="unitPrice"></p-sortIcon></th>
+                <th pSortableColumn="quantity" class="white-space-nowrap" style="width:35%">Quantity<p-sortIcon field="quantity"></p-sortIcon></th>
+                <th pSortableColumn="description" class="white-space-nowrap" style="width:35%">Description<p-sortIcon field="description"></p-sortIcon></th>
+                <th pSortableColumn="vendorProductId" class="white-space-nowrap" style="width:35%">Vendorproductid<p-sortIcon field="vendorProductId"></p-sortIcon></th>
+                <th pSortableColumn="manufacturer" class="white-space-nowrap" style="width:35%">Manufacturer<p-sortIcon field="manufacturer"></p-sortIcon></th>
+
+                <th  class="white-space-nowrap" style="width:25%">Action</th>
+            </tr>
+
+        </ng-template>
+        <ng-template pTemplate="body" let-VendorproductsData>
+            <tr>
+                <!--                <td>{{ order.id }}</td>-->
+                <!--                <td>{{ order.customer }}</td>-->
+                <!--                <td>{{ order.id }}</td>-->
+                <!--                <td>{{ order.amount | currency: 'USD' }}</td>-->
+                <!--                <td>-->
+                <!--                    <p-tag [value]="order.status" [severity]="getStatusSeverity(order.status)"></p-tag>-->
+                <!--                </td>-->
+                <!--                <td><p-button type="button" icon="pi pi-plus"></p-button></td>-->
+
+
+<!--                <td style="width:16%; min-width:10rem;">-->
+<!--                    {{Zone.floorId}}-->
+<!--                </td>-->
+<!--                <td style="width:16%; min-width:10rem;">-->
+<!--                    {{Zone.zoneLocation}}-->
+<!--                </td>-->
+<!--                <td style="width:16%; min-width:10rem;">-->
+<!--                    {{Zone.demandLevel}}-->
+<!--                </td>-->
+<!--                <td style="width:16%; min-width:10rem;">-->
+<!--                    {{Zone.width}}-->
+<!--                </td>-->
+<!--                <td style="width:16%; min-width:10rem;">-->
+<!--                    {{Zone.length}}-->
+<!--                </td>-->
+
+                <td style="width:14%; min-width:10rem;">
+                    {{VendorproductsData.vendorId}}
+                </td>
+                <td style="width:14%; min-width:10rem;">
+                    {{VendorproductsData.productId}}
+                </td>
+                <td style="width:14%; min-width:10rem;">
+                    {{VendorproductsData.unitPrice}}
+                </td>
+                <td style="width:14%; min-width:10rem;">
+                    {{VendorproductsData.quantity}}
+                </td>
+                <td style="width:14%; min-width:10rem;">
+                    {{VendorproductsData.description}}
+                </td>
+                <td style="width:14%; min-width:10rem;">
+                    {{VendorproductsData.vendorProductId}}
+                </td>
+                <td style="width:14%; min-width:10rem;">
+                    {{VendorproductsData.manufacturer}}
+                </td>
+
+                <td>
+                    <div class="flex">
+
+                        <button pButton pRipple icon="pi pi-pencil"
+                                class="p-button-rounded p-button-primary mr-2" pTooltip="Edit"
+                                (click)="showEditVendorproductsDialog(VendorproductsData)"></button>
+
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                (click)="deleteVendorproducts(VendorproductsData)"   pTooltip="Delete"></button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="6">There are no products for this vendor</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -1,0 +1,610 @@
+<p-toast></p-toast>
+<div class="card"  >
+
+    <p-dialog [(visible)]="newinvoiceDialog" width=60% height=70% header="Job Invoice"
+        [modal]="true" class="p-fluid">
+        <ng-template pTemplate="content">
+
+            <div class="grid" >
+                <div class="col">
+                    <div class="card">
+                        <div id="invoice-content2" #invoicecontent2>
+                            <div class="invoice px-6">
+                                <div class="invoice-header">
+                                    <div class="invoice-company">
+                                        <!--                                        <img   id="invoice-logo" class="logo-image"-->
+                                        <!--                                               src="{{companyLogoD}}"-->
+                                        <!--                                        />-->
+
+                                    </div>
+
+
+
+                                    <div class="mt-5 mb-8 flex flex-column">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRilLusRXh0IR7uCkJh0KH01OOV_1Sw-ObaChAI1WM&s" alt="stretchline" width="75" height="75">
+                                        <div class="mb-3 text-2xl font-medium">Stretchline</div>
+                                        <span class="mb-2">Lot 89,Biyagama Export Processing Zone</span>
+                                        <span>Sri Lanka</span>
+                                    </div>
+
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full" style="border-collapse: collapse; table-layout: auto">
+                                            <!-- <thead>
+				<tr>
+					<th class="text-left font-semibold py-3 border-bottom-1 surface-border white-space-nowrap">Description</th>
+					<th class="text-right font-semibold py-3 border-bottom-1 surface-border white-space-nowrap px-3">Quantity</th>
+					<th class="text-right font-semibold py-3 border-bottom-1 surface-border white-space-nowrap px-3">Unit Price</th>
+					<th class="text-right font-semibold py-3 border-bottom-1 surface-border white-space-nowrap">Line Total</th>
+				</tr>
+			</thead> -->
+                                            <tbody>
+                                                <tr>
+                                                    <td
+                                                        class="text-left py-3 border-bottom-1 surface-border white-space-nowrap"> DATE</td>
+                                                    <td class="text-right py-3 border-bottom-1 surface-border">{{this.formatDate(selectedDateForFiltering)}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td
+                                                        class="text-left py-3 border-bottom-1 surface-border white-space-nowrap">Invoice ID</td>
+                                                    <td class="text-right py-3 border-bottom-1 surface-border">ID001</td>
+                                                </tr>
+                                                <tr>
+                                                    <td
+                                                        class="text-left py-3 border-bottom-1 surface-border white-space-nowrap">Invoice Name No</td>
+
+                                                    <td class="text-right py-3 border-bottom-1 surface-border">XZ-5615</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td
+                                                        class="text-left py-3 border-bottom-1 surface-border white-space-nowrap">Vendor address</td>
+
+                                                    <td class="text-right py-3 border-bottom-1 surface-border">Lot 89,Biyagama Export Processing Zone</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td
+                                                        class="text-left py-3 border-bottom-1 surface-border white-space-nowrap">Invoice type</td>
+
+                                                    <td class="text-right py-3 border-bottom-1 surface-border">Excel</td>
+                                                </tr>
+                                                <tr>
+                                                    <td
+                                                        class="text-left py-3 border-bottom-1 surface-border white-space-nowrap">Amount</td>
+
+                                                    <td class="text-right py-3 border-bottom-1 surface-border">79,289.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td
+                                                        class="text-left py-3 border-bottom-1 surface-border white-space-nowrap">Due Date</td>
+
+                                                    <td class="text-right py-3 border-bottom-1 surface-border">2023/09/22</td>
+                                                </tr>
+
+
+                                                <div class="overflow-x-auto">
+                                                    <table class="w-full" style="border-collapse: collapse; table-layout: auto">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-left font-semibold py-3 border-bottom-1 surface-border white-space-nowrap">Product ID</th>
+                                                                <th class="text-right font-semibold py-3 border-bottom-1 surface-border white-space-nowrap px-3">Product Name</th>
+                                                                <th class="text-right font-semibold py-3 border-bottom-1 surface-border white-space-nowrap px-3">Quantity</th>
+                                                                <th class="text-right font-semibold py-3 border-bottom-1 surface-border white-space-nowrap ">Unit Price</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="text-left py-3 border-bottom-1 surface-border white-space-nowrap">ID001</td>
+                                                                <td class="text-right py-3 border-bottom-1 surface-border px-3">Elastic Black</td>
+                                                                <td class="text-right py-3 border-bottom-1 surface-border px-3">50</td>
+                                                                <td class="text-right py-3 border-bottom-1 surface-border">$49.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-left py-3 border-bottom-1 surface-border white-space-nowrap">ID001</td>
+                                                                <td class="text-right py-3 border-bottom-1 surface-border px-3">Elastic White</td>
+                                                                <td class="text-right py-3 border-bottom-1 surface-border px-3">80</td>
+                                                                <td class="text-right py-3 border-bottom-1 surface-border">$497.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-left py-3 border-bottom-1 surface-border white-space-nowrap">ID001</td>
+                                                                <td class="text-right py-3 border-bottom-1 surface-border px-3">Elastic Multicolor</td>
+                                                                <td class="text-right py-3 border-bottom-1 surface-border px-3">10</td>
+                                                                <td class="text-right py-3 border-bottom-1 surface-border">$59.00</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                
+
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+                                    
+
+                                    <!-- <div>
+                                        <div class="invoice-title">INVOICE</div>
+                                        <div class="invoice-details">
+                                            <div class="invoice-label">DATE </div>
+                                            <div  class="invoice-value">{{this.formatDate(selectedDateForFiltering)}}</div>
+                                            <div  class="invoice-label">22/10/2022</div>
+
+                                            <div class="invoice-label">JobID</div>
+                                            <div *ngIf="invoiceDataOne" class="invoice-value">{{invoiceDataOne.invoiceId}}</div>
+
+                                            <div class="invoice-label">Vehicle Reg No</div>
+                                            <div *ngIf="invoiceDataOne" class="invoice-value">{{invoiceDataOne.invoiceName}}</div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- <div class="invoice-items">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Description</th>
+                                                <th>Quantity</th>
+                                                <th>Unit Price</th>
+                                                <th>Line Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let InvoiceProduct of InvoiceProduct">
+                                                <td>{{InvoiceProduct.description}}</td>
+                                                <td>-</td>
+                                                <td>{{InvoiceProduct.unitPrice}} Rs</td>
+                                                <td>{{InvoiceProduct.quantity}} Rs</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div> -->
+
+
+                                <div class="flex flex-column md:flex-row md:align-items-start md:justify-content-between mt-8">
+                                    <div class="font-semibold mb-3 md:mb-0">NOTES</div>
+                                    <div class="flex flex-column">
+                                        <div class="flex justify-content-between align-items-center mb-2">
+                                            <span class="font-semibold mr-6">SUBTOTAL</span>
+                                            <span>$332.00</span>
+                                        </div>
+                                        <div class="flex justify-content-between align-items-center mb-2">
+                                            <span class="font-semibold mr-6">VAT #</span>
+                                            <span>0</span>
+                                        </div>
+                                        <div class="flex justify-content-between align-items-center">
+                                            <span class="font-semibold mr-6">TOTAL</span>
+                                            <span>$332.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="invoice-summary">
+                                        <!-- <div class="invoice-notes">
+                                            <b>NOTES</b>
+                                            <div>
+
+                                            </div>
+                                        </div> -->
+                                    <!--                                    <div>-->
+                                    <!--                                        <div class="invoice-details">-->
+                                    <!--                                            <div class="invoice-label">SUBTOTAL</div>-->
+                                    <!--                                            <div class="invoice-value">{{getTotalBill()}} Rs</div>-->
+
+                                    <!--                                            <div class="invoice-label">DISCOUNT</div>-->
+                                    <!--                                            <div *ngIf="job" class="invoice-value">{{job.Discount}} %</div>-->
+
+                                    <!--                                            <div class="invoice-label">TOTAL</div>-->
+                                    <!--                                            <div *ngIf="job && total" class="invoice-value">{{getSub(job.Discount)}}-->
+                                    <!--                                                Rs-->
+                                    <!--                                            </div>-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <button pButton pRipple label="Print Invoice" icon="pi pi-print" class="p-button-primary mr-2"
+                            (click)="printInvoice()"></button>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
+                (click)="newinvoiceDialog = false"></button>
+
+        </ng-template>
+    </p-dialog>
+
+    <!--    <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>-->
+    <!--    <p-table #dt [value]="InvoiceData" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"-->
+    <!--        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"-->
+    <!--        [globalFilterFields]="['invoiceId','invoiceName','vendorAddress','confirmationDate','description','terms','holdInvoice','holdPayment','allowOverride','recurring','currency','exchangeRate','rateType','lock','refNo','invoiceType','invoiceDate','applyDate','fiscalYear','period','dueDate','amount','paymentMethod','invoiceSummary',]"-->
+    <!--             [loading]="isDataLoading"  >-->
+    <!--        <ng-template pTemplate="caption">-->
+    <!--            <div class="flex flex-wrap gap-2 align-items-center justify-content-between">-->
+    <!--                <span class="p-input-icon-left w-full sm:w-20rem flex-order-1 sm:flex-order-0">-->
+    <!--                    <i class="pi pi-search"></i>-->
+    <!--                    <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Invoice Search" class="w-full" />-->
+    <!--                </span>-->
+    <!--                <button (click)="showCreateInvoiceDialog()" pButton class="p-button-outlined w-full sm:w-auto flex-order-0 sm:flex-order-1" icon="pi pi-plus" label="Add Invoice"></button>-->
+    <!--            </div>-->
+    <!--        </ng-template>-->
+    <!--        <ng-template pTemplate="header">-->
+    <!--            <tr>-->
+    <!--                <th pSortableColumn="invoiceId" class="white-space-nowrap" style="width:35%">Invoiceid<p-sortIcon field="invoiceId"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="invoiceName" class="white-space-nowrap" style="width:35%">Invoicename<p-sortIcon field="invoiceName"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="vendorAddress" class="white-space-nowrap" style="width:35%">Vendoraddress<p-sortIcon field="vendorAddress"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="confirmationDate" class="white-space-nowrap" style="width:35%">Confirmationdate<p-sortIcon field="confirmationDate"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="description" class="white-space-nowrap" style="width:35%">Description<p-sortIcon field="description"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="terms" class="white-space-nowrap" style="width:35%">Terms<p-sortIcon field="terms"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="holdInvoice" class="white-space-nowrap" style="width:35%">Holdinvoice<p-sortIcon field="holdInvoice"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="holdPayment" class="white-space-nowrap" style="width:35%">Holdpayment<p-sortIcon field="holdPayment"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="allowOverride" class="white-space-nowrap" style="width:35%">Allowoverride<p-sortIcon field="allowOverride"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="recurring" class="white-space-nowrap" style="width:35%">Recurring<p-sortIcon field="recurring"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="currency" class="white-space-nowrap" style="width:35%">Currency<p-sortIcon field="currency"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="exchangeRate" class="white-space-nowrap" style="width:35%">Exchangerate<p-sortIcon field="exchangeRate"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="rateType" class="white-space-nowrap" style="width:35%">Ratetype<p-sortIcon field="rateType"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="lock" class="white-space-nowrap" style="width:35%">Lock<p-sortIcon field="lock"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="refNo" class="white-space-nowrap" style="width:35%">Refno<p-sortIcon field="refNo"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="invoiceType" class="white-space-nowrap" style="width:35%">Invoicetype<p-sortIcon field="invoiceType"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="invoiceDate" class="white-space-nowrap" style="width:35%">Invoicedate<p-sortIcon field="invoiceDate"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="applyDate" class="white-space-nowrap" style="width:35%">Applydate<p-sortIcon field="applyDate"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="fiscalYear" class="white-space-nowrap" style="width:35%">Fiscalyear<p-sortIcon field="fiscalYear"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="period" class="white-space-nowrap" style="width:35%">Period<p-sortIcon field="period"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="dueDate" class="white-space-nowrap" style="width:35%">Duedate<p-sortIcon field="dueDate"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="amount" class="white-space-nowrap" style="width:35%">Amount<p-sortIcon field="amount"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="paymentMethod" class="white-space-nowrap" style="width:35%">Paymentmethod<p-sortIcon field="paymentMethod"></p-sortIcon></th>-->
+    <!--<th pSortableColumn="invoiceSummary" class="white-space-nowrap" style="width:35%">Invoicesummary<p-sortIcon field="invoiceSummary"></p-sortIcon></th>-->
+
+    <!--                <th  class="white-space-nowrap" style="width:25%">Action</th>-->
+    <!--            </tr>-->
+    <!--        </ng-template>-->
+    <!--        <ng-template pTemplate="body" let-InvoiceData>-->
+    <!--            <tr>-->
+    <!--                <td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.invoiceId}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.invoiceName}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.vendorAddress}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.confirmationDate | date:'shortDate'}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.description}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.terms}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.holdInvoice}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.holdPayment}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.allowOverride}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.recurring}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.currency}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.exchangeRate}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.rateType}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.lock}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.refNo}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.invoiceType}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--    {{ InvoiceData.invoiceDate | date:'shortDate' }}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.applyDate | date:'shortDate'}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.fiscalYear | date:'shortDate'}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.period | date:'shortDate'}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.dueDate | date:'shortDate'}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.amount}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.paymentMethod}}-->
+    <!--</td>-->
+    <!--<td style="width:4%; min-width:10rem;">-->
+    <!--{{InvoiceData.invoiceSummary}}-->
+    <!--</td>-->
+
+    <!--                <td>-->
+    <!--                    <div class="flex">-->
+    <!--                        <button pButton pRipple icon="pi pi-print"-->
+    <!--                                class="p-button-rounded p-button-secondary mr-2" pTooltip="Print Bill"-->
+    <!--                                (click)="openInvoice(InvoiceData)"></button>-->
+
+    <!--                        <button pButton pRipple icon="pi pi-pencil"-->
+    <!--                                class="p-button-rounded p-button-primary mr-2" pTooltip="Edit"-->
+    <!--                                (click)="showEditInvoiceDialog(InvoiceData)"></button>-->
+
+    <!--                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"-->
+    <!--                             (click)="deleteInvoice(InvoiceData)"   pTooltip="Delete"></button>-->
+    <!--                    </div>-->
+    <!--                </td>-->
+    <!--            </tr>-->
+    <!--        </ng-template>-->
+    <!--    </p-table>-->
+
+    <p-table #dt [value]="InvoiceData" selectionMode="single" [(selection)]="selectedRow"
+        [expandedRowKeys]="expandedRows" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+        responsiveLayout="scroll" dataKey="invoiceId" [tableStyle]="{ 'min-width': '60rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10,25,50]"
+        [globalFilterFields]="['warehouseId','warehouseName','totalSpaceSQFT','location','floors','floorId','zoneLocation','demandLevel']"
+        [loading]="isDataLoading">
+        <ng-template pTemplate="caption">
+            <div class="flex flex-wrap gap-2 align-items-center justify-content-between">
+                <span class="p-input-icon-left w-full sm:w-20rem flex-order-1 sm:flex-order-0">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Invoice Search"
+                        class="w-full" />
+                </span>
+                <div>
+                    <button pButton icon="pi pi-fw {{isExpanded ? 'pi-minus' : 'pi-plus'}}"
+                        label="{{isExpanded ? 'Collapse All' : 'Expand All'}}" (click)="expandAll()"></button>
+                    <button (click)="showCreateInvoiceDialog()" pButton
+                        class="p-button-outlined  ml-3 w-full sm:w-auto flex-order-0 sm:flex-order-1" icon="pi pi-plus"
+                        label="Add Invoice"></button>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+
+
+            <tr>
+                <th style="width: 5rem"></th>
+
+                <th pSortableColumn="invoiceId" class="white-space-nowrap" style="width:35%">Invoice ID<p-sortIcon
+                        field="invoiceId"></p-sortIcon></th>
+                <th pSortableColumn="invoiceName" class="white-space-nowrap" style="width:35%">Invoice Name<p-sortIcon
+                        field="invoiceName"></p-sortIcon></th>
+                <th pSortableColumn="vendorAddress" class="white-space-nowrap" style="width:35%">
+                    Vendor Address<p-sortIcon field="vendorAddress"></p-sortIcon></th>
+                <th pSortableColumn="confirmationDate" class="white-space-nowrap" style="width:35%">
+                    Confirmation Date<p-sortIcon field="confirmationDate"></p-sortIcon></th>
+                <th pSortableColumn="description" class="white-space-nowrap" style="width:35%">Description<p-sortIcon
+                        field="description"></p-sortIcon></th>
+                <!--                <th pSortableColumn="terms" class="white-space-nowrap" style="width:35%">Terms<p-sortIcon field="terms"></p-sortIcon></th>-->
+                <!--                <th pSortableColumn="holdInvoice" class="white-space-nowrap" style="width:35%">Holdinvoice<p-sortIcon field="holdInvoice"></p-sortIcon></th>-->
+                <!--                <th pSortableColumn="holdPayment" class="white-space-nowrap" style="width:35%">Holdpayment<p-sortIcon field="holdPayment"></p-sortIcon></th>-->
+                <!--                <th pSortableColumn="allowOverride" class="white-space-nowrap" style="width:35%">Allowoverride<p-sortIcon field="allowOverride"></p-sortIcon></th>-->
+                <!--                <th pSortableColumn="recurring" class="white-space-nowrap" style="width:35%">Recurring<p-sortIcon field="recurring"></p-sortIcon></th>-->
+                <!--                <th pSortableColumn="currency" class="white-space-nowrap" style="width:35%">Currency<p-sortIcon field="currency"></p-sortIcon></th>-->
+                <!--                <th pSortableColumn="exchangeRate" class="white-space-nowrap" style="width:35%">Exchangerate<p-sortIcon field="exchangeRate"></p-sortIcon></th>-->
+                <th pSortableColumn="rateType" class="white-space-nowrap" style="width:35%">Rate Type<p-sortIcon
+                        field="rateType"></p-sortIcon></th>
+                <!--                <th pSortableColumn="lock" class="white-space-nowrap" style="width:35%">Lock<p-sortIcon field="lock"></p-sortIcon></th>-->
+                <th pSortableColumn="refNo" class="white-space-nowrap" style="width:35%">Ref no<p-sortIcon
+                        field="refNo"></p-sortIcon></th>
+                <th pSortableColumn="invoiceType" class="white-space-nowrap" style="width:35%">Invoice Type<p-sortIcon
+                        field="invoiceType"></p-sortIcon></th>
+                <th pSortableColumn="invoiceDate" class="white-space-nowrap" style="width:35%">Invoice Date<p-sortIcon
+                        field="invoiceDate"></p-sortIcon></th>
+                <!--                <th pSortableColumn="applyDate" class="white-space-nowrap" style="width:35%">Applydate<p-sortIcon field="applyDate"></p-sortIcon></th>-->
+                <!--                <th pSortableColumn="fiscalYear" class="white-space-nowrap" style="width:35%">Fiscalyear<p-sortIcon field="fiscalYear"></p-sortIcon></th>-->
+                <!--                <th pSortableColumn="period" class="white-space-nowrap" style="width:35%">Period<p-sortIcon field="period"></p-sortIcon></th>-->
+                <th pSortableColumn="dueDate" class="white-space-nowrap" style="width:35%">Due date<p-sortIcon
+                        field="dueDate"></p-sortIcon></th>
+                <th pSortableColumn="amount" class="white-space-nowrap" style="width:35%">Amount<p-sortIcon
+                        field="amount"></p-sortIcon></th>
+                <th pSortableColumn="paymentMethod" class="white-space-nowrap" style="width:35%">
+                    Payment method<p-sortIcon field="paymentMethod"></p-sortIcon></th>
+                <th pSortableColumn="invoiceSummary" class="white-space-nowrap" style="width:35%">
+                    Invoice Summary<p-sortIcon field="invoiceSummary"></p-sortIcon></th>
+
+                <th class="white-space-nowrap" style="width:25%">Action</th>
+            </tr>
+
+        </ng-template>
+        <ng-template pTemplate="body" let-InvoiceData let-expanded="expanded">
+
+            <tr [pSelectableRow]="InvoiceData" [pRowToggler]="InvoiceData">
+
+                <td>
+                    <button type="button" pButton pRipple class="p-button-text p-button-rounded p-button-plain"
+                        [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                </td>
+                <td style="width:4%; min-width:10rem;">
+                    {{InvoiceData.invoiceId}}
+                </td>
+                <td style="width:4%; min-width:10rem;">
+                    {{InvoiceData.invoiceName}}
+                </td>
+                <td style="width:4%; min-width:10rem;">
+                    {{InvoiceData.vendorAddress}}
+                </td>
+                <td style="width:4%; min-width:10rem;">
+                    {{InvoiceData.confirmationDate | date:'shortDate'}}
+                </td>
+                <td style="width:4%; min-width:10rem;">
+                    {{InvoiceData.description}}
+                    <!--                </td>-->
+                    <!--                <td style="width:4%; min-width:10rem;">-->
+                    <!--                {{InvoiceData.terms}}-->
+                    <!--                </td>-->
+                    <!--                <td style="width:4%; min-width:10rem;">-->
+                    <!--                {{InvoiceData.holdInvoice}}-->
+                    <!--                </td>-->
+                    <!--                <td style="width:4%; min-width:10rem;">-->
+                    <!--                {{InvoiceData.holdPayment}}-->
+                    <!--                </td>-->
+                    <!--                <td style="width:4%; min-width:10rem;">-->
+                    <!--                {{InvoiceData.allowOverride}}-->
+                    <!--                </td>-->
+                    <!--                <td style="width:4%; min-width:10rem;">-->
+                    <!--                {{InvoiceData.recurring}}-->
+                    <!--                </td>-->
+                    <!--                <td style="width:4%; min-width:10rem;">-->
+                    <!--                {{InvoiceData.currency}}-->
+                    <!--                </td>-->
+                    <!--                <td style="width:4%; min-width:10rem;">-->
+                    <!--                {{InvoiceData.exchangeRate}}-->
+                    <!--                </td>-->
+                <td style="width:4%; min-width:10rem;">
+                    {{InvoiceData.rateType}}
+                </td>
+                <!--                <td style="width:4%; min-width:10rem;">-->
+                <!--                {{InvoiceData.lock}}-->
+                <!--                </td>-->
+                <td style="width:4%; min-width:10rem;">
+                    {{InvoiceData.refNo}}
+                </td>
+                <td style="width:4%; min-width:10rem;">
+                    {{InvoiceData.invoiceType}}
+                </td>
+                <td style="width:4%; min-width:10rem;">
+                    {{ InvoiceData.invoiceDate | date:'shortDate' }}
+                </td>
+                <!--                <td style="width:4%; min-width:10rem;">-->
+                <!--                {{InvoiceData.applyDate | date:'shortDate'}}-->
+                <!--                </td>-->
+                <!--                <td style="width:4%; min-width:10rem;">-->
+                <!--                {{InvoiceData.fiscalYear | date:'shortDate'}}-->
+                <!--                </td>-->
+                <!--                <td style="width:4%; min-width:10rem;">-->
+                <!--                {{InvoiceData.period | date:'shortDate'}}-->
+                <!--                </td>-->
+                <td style="width:4%; min-width:10rem;">
+                    {{InvoiceData.dueDate | date:'shortDate'}}
+                </td>
+                <td style="width:4%; min-width:10rem;">
+                    {{InvoiceData.amount}}
+                </td>
+                <td style="width:4%; min-width:10rem;">
+                    {{InvoiceData.paymentMethod}}
+                </td>
+                <td style="width:4%; min-width:10rem;">
+                    {{InvoiceData.invoiceSummary}}
+                </td>
+
+                <td>
+                    <div class="flex">
+                        <button pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-warning mr-2"
+                            pTooltip="Inventory" label="Product"
+                            (click)="showCreateInvoiceproductDialog(InvoiceData)"></button>
+                        <button pButton pRipple icon="pi pi-print" class="p-button-rounded p-button-secondary mr-2"
+                            pTooltip="Print Bill" (click)="openInvoice(InvoiceData)"></button>
+
+                        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-primary mr-2"
+                            pTooltip="Edit" (click)="showEditInvoiceDialog(InvoiceData)"></button>
+
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                            (click)="deleteInvoice(InvoiceData)" pTooltip="Delete"></button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="rowexpansion" let-InvoicesData>
+            <tr>
+                <td colspan="15">
+                    <div class="">
+                        <p-table [value]="InvoicesData.invoiceProduct" dataKey="invoiceProductId"
+                            [loading]="isDataLoading2">
+                            <ng-template pTemplate="header">
+
+
+
+
+            <tr>
+                <th pSortableColumn="Invoice Product Id" class="white-space-nowrap" style="width:5%">
+                    Invoiceproductid<p-sortIcon field="invoiceProductId"></p-sortIcon></th>
+                <th pSortableColumn="Product Name" class="white-space-nowrap" style="width:25%">Product name<p-sortIcon
+                        field="productName"></p-sortIcon></th>
+                <th pSortableColumn="Quantity" class="white-space-nowrap" style="width:5%">Quantity<p-sortIcon
+                        field="quantity"></p-sortIcon></th>
+                <th pSortableColumn="UnitPrice" class="white-space-nowrap" style="width:5%">Unit price<p-sortIcon
+                        field="unitPrice"></p-sortIcon></th>
+                <th pSortableColumn="Manufacturer" class="white-space-nowrap" style="width: 10%">Manufacturer<p-sortIcon
+                        field="manufacturer"></p-sortIcon></th>
+                <th pSortableColumn="Description" class="white-space-nowrap" style="width:25%">Description<p-sortIcon
+                        field="description"></p-sortIcon></th>
+                <th pSortableColumn="Product Id" class="white-space-nowrap" style="width:5%">Product ID<p-sortIcon
+                        field="productId"></p-sortIcon></th>
+
+                <th class="white-space-nowrap" style="width:25%">Action</th>
+            </tr>
+
+        </ng-template>
+        <ng-template pTemplate="body" let-InvoiceproductData>
+
+
+            <tr>
+                <td style="width:14%; min-width:10rem;">
+                    {{InvoiceproductData.invoiceProductId}}
+                </td>
+                <td style="width:14%; min-width:10rem;">
+                    {{InvoiceproductData.productName}}
+                </td>
+                <td style="width:14%; min-width:10rem;">
+                    {{InvoiceproductData.quantity}}
+                </td>
+                <td style="width:14%; min-width:10rem;">
+                    {{InvoiceproductData.unitPrice}}
+                </td>
+                <td style="width:14%; min-width:10rem;">
+                    {{InvoiceproductData.manufacturer}}
+                </td>
+                <td style="width:14%; min-width:20rem;">
+                    {{InvoiceproductData.description}}
+                </td>
+                <td style="width:14%; min-width:10rem;">
+                    {{InvoiceproductData.productId}}
+                </td>
+
+                <td>
+                    <div class="flex">
+
+                        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-primary mr-2"
+                            pTooltip="Edit" (click)="showEditInvoiceproductDialog(InvoiceproductData)"></button>
+
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                            (click)="deleteInvoiceproduct(InvoiceproductData)" pTooltip="Delete"></button>
+                    </div>
+                </td>
+            </tr>
+
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="6">There are no products for this vendor</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+
+
+</div>

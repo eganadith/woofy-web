@@ -1,0 +1,420 @@
+<div class="p-4">
+  <div class="grid p-fluid formgrid">
+
+
+    <div class="field col-12 md:col-2">
+      <label for="refNo">Ref No</label>
+
+
+      <p-inputNumber id="refNo" type="text" placeholder="Reference Number " [(ngModel)]="invoice.refNo"></p-inputNumber>
+
+
+
+    </div>
+
+
+
+    <div class="field col-12 md:col-4">
+      <label for="invoiceId">Invoice Id</label>
+
+
+      <input id="invoiceId" type="text" placeholder="Invoice Id" pInputText [(ngModel)]="invoice.invoiceId">
+
+
+
+    </div>
+
+
+    <div class="field col-12 md:col-6">
+      <label for="invoiceName">Invoice Name</label>
+
+
+      <!-- <input id="invoiceName" type="text" placeholder="invoiceName" pInputText  [(ngModel)]="invoice.invoiceName"
+              > -->
+
+      <p-dropdown id="invoiceName" type="text" placeholder="Invoice Name" [options]="cities" [editable]="true"
+        optionLabel="name"></p-dropdown>
+
+
+
+
+    </div>
+
+
+    <div class="field col-12 md:col-6">
+      <label for="vendorAddress">Vendor Address</label>
+
+
+      <!-- <textarea rows="5" cols="30" pInputTextarea id="vendorAddress" [(ngModel)]="invoice.vendorAddress"
+              ></textarea> -->
+
+      <input id="vendorAddress" type="text" placeholder="Vendor Address" pInputText [(ngModel)]="invoice.vendorAddress">
+
+
+
+    </div>
+
+
+    <div class="field col-12 md:col-6">
+      <label for="confirmationDate">Confirmation Date</label>
+
+
+      <p-calendar id="confirmationDate" appendTo="body" [(ngModel)]="invoice.confirmationDate"
+        [showIcon]="true"></p-calendar>
+
+
+
+    </div>
+
+
+    <div class="field col-12 md:col-6">
+      <label for="description">Description</label>
+
+
+      <input id="description" type="text" placeholder="Description" pInputText [(ngModel)]="invoice.description">
+
+
+
+    </div>
+
+
+    <div class="field col-12 md:col-6">
+      <label for="terms">Terms</label>
+
+
+      <input id="terms" type="text" placeholder="terms" pInputText [(ngModel)]="invoice.terms">
+
+
+
+    </div>
+
+
+    <div class="field col-12 md:col-6">
+      <!-- <label for="holdInvoice">Hold Invoice</label>
+
+
+              <input id="holdInvoice" type="text" placeholder="holdInvoice" pInputText  [(ngModel)]="invoice.holdInvoice"
+                autofocus [ngClass]="{'ng-invalid ng-dirty': submitted && !invoice.holdInvoice}"> -->
+
+      <div class="flex align-items-center gap-1">
+<!--        <p-checkbox type="bool" name="group1" value="New York" [(ngModel)]="invoice.holdInvoice" inputId="ny"></p-checkbox>-->
+          <p-checkbox
+              type="bool"
+              name="group1"
+              value="New York"
+              [(ngModel)]="invoice.holdInvoice"
+              inputId="ny"
+          ></p-checkbox>
+        <label for="ny">Hold Invoice</label>
+      </div>
+
+
+
+
+    </div>
+
+
+    <div class="field col-12 md:col-6">
+      <!-- <label for="holdPayment">Hold Payment</label> -->
+
+
+      <!-- <input id="holdPayment" type="text" placeholder="holdPayment" pInputText  [(ngModel)]="invoice.holdPayment"
+                autofocus [ngClass]="{'ng-invalid ng-dirty': submitted && !invoice.holdPayment}"> -->
+
+      <div class="flex align-items-center gap-1">
+<!--        <p-checkbox name="group1" value="San Francisco" [(ngModel)]="invoice.allowOverride " inputId="sf"></p-checkbox>-->
+          <p-checkbox
+              type="bool"
+              name="group1"
+              value="New York"
+              [(ngModel)]="invoice.allowOverride"
+              inputId="ny"
+          ></p-checkbox>
+        <label for="sf">Allow Override</label>
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+    <div class="field col-12 md:col-6">
+      <!-- <label for="holdInvoice">Hold Invoice</label>
+
+
+            <input id="holdInvoice" type="text" placeholder="holdInvoice" pInputText  [(ngModel)]="invoice.holdInvoice"
+              autofocus [ngClass]="{'ng-invalid ng-dirty': submitted && !invoice.holdInvoice}"> -->
+
+      <div class="flex align-items-center gap-1">
+<!--        <p-checkbox name="group1" value="New York" [(ngModel)]="invoice.holdPayment " inputId="ny"></p-checkbox>-->
+          <p-checkbox
+              type="bool"
+              name="group1"
+              value="New York"
+              [(ngModel)]="invoice.holdPayment"
+              inputId="ny"
+          ></p-checkbox>
+        <label for="ny">Hold Payment </label>
+      </div>
+
+
+
+
+    </div>
+
+
+    <div class="field col-12 md:col-6">
+      <!-- <label for="holdPayment">Hold Payment</label> -->
+
+
+      <!-- <input id="holdPayment" type="text" placeholder="holdPayment" pInputText  [(ngModel)]="invoice.holdPayment"
+              autofocus [ngClass]="{'ng-invalid ng-dirty': submitted && !invoice.holdPayment}"> -->
+
+      <div class="flex align-items-center gap-1">
+<!--        <p-checkbox name="group1" value="San Francisco" [(ngModel)]="invoice.recurring" inputId="sf"></p-checkbox>-->
+          <p-checkbox
+              type="bool"
+              name="group1"
+              value="New York"
+              [(ngModel)]="invoice.recurring"
+              inputId="ny"
+          ></p-checkbox>
+        <label for="sf">Recurring</label>
+      </div>
+
+
+
+    </div>
+
+
+    <div class="field col-12 md:col-2">
+      <label for="invoiceDate">Invoice Date</label>
+
+
+      <p-calendar id="invoiceDate" appendTo="body" [(ngModel)]="invoice.invoiceDate" [showIcon]="true"></p-calendar>
+
+
+
+    </div>
+
+
+    <div class="field col-12 md:col-2">
+      <label for="applyDate">Apply Date</label>
+
+
+      <p-calendar id="applyDate" appendTo="body" [(ngModel)]="invoice.applyDate" [showIcon]="true"></p-calendar>
+
+
+
+    </div>
+
+
+    <div class="field col-12 md:col-2">
+      <label for="fiscalYear">Fiscal Year</label>
+
+
+      <p-calendar id="fiscalYear" appendTo="body" [(ngModel)]="invoice.fiscalYear" [showIcon]="true"></p-calendar>
+
+
+
+    </div>
+
+
+
+
+    <div class="field col-12 md:col-4">
+      <label for="amount">Amount</label>
+
+
+      <p-inputNumber [(ngModel)]="invoice.amount" inputId="currency-us" mode="currency" currency="USD"
+        locale="en-US"></p-inputNumber>
+
+
+
+    </div>
+
+
+    <div class="field col-12 md:col-2">
+      <label for="dueDate">Due Date</label>
+
+
+      <p-calendar id="dueDate" appendTo="body" [(ngModel)]="invoice.dueDate" [showIcon]="true"></p-calendar>
+
+
+
+    </div>
+
+
+    <div class="field col-12 md:col-2">
+      <label for="period">Period</label>
+
+
+      <p-calendar id="period" appendTo="body" [(ngModel)]="invoice.period" [showIcon]="true"></p-calendar>
+
+
+
+    </div>
+
+
+    <!-- <div class="field col-12 md:col-4">
+      <label for="paymentMethod">Payment Method</label>
+
+
+      <input id="paymentMethod" type="text" placeholder="paymentMethod" pInputText [(ngModel)]="invoice.paymentMethod">
+
+
+
+    </div> -->
+
+
+    <div class="field col-12 md:col-4">
+      <label for="paymentMethod">Payment Method</label>
+
+
+      <!-- <input id="invoiceName" type="text" placeholder="invoiceName" pInputText  [(ngModel)]="invoice.invoiceName"
+              > -->
+
+      <p-dropdown id="paymentMethod" type="text" placeholder="Visa" [options]="cardtype" [editable]="true"
+        optionLabel="name"></p-dropdown>
+
+
+
+
+    </div>
+
+
+    <!--
+        <div class="field col-12 md:col-6">
+            <label for="allowOverride">Allow Override</label>
+
+
+              <input id="allowOverride" type="text" placeholder="allowOverride" pInputText  [(ngModel)]="invoice.allowOverride"
+              >
+
+
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="recurring">Recurring</label>
+
+
+              <input id="recurring" type="text" placeholder="recurring" pInputText  [(ngModel)]="invoice.recurring"
+              >
+
+
+
+        </div>
+         -->
+
+    <div class="field col-12 md:col-6">
+      <label for="currency">Currency</label>
+
+      <p-dropdown id="currency" type="text" placeholder="LKR" [options]="currencytype" [editable]="true"
+        optionLabel="name"></p-dropdown>
+
+    </div>
+
+
+    <div class="field col-12 md:col-6">
+      <label for="exchangeRate">Exchange Rate</label>
+
+
+      <input id="exchangeRate" type="number" placeholder="exchangeRate" pInputText [(ngModel)]="invoice.exchangeRate">
+
+
+
+    </div>
+
+
+    <!-- <div class="field col-12 md:col-6">
+      <label for="rateType">Rate Type</label>
+
+
+      <input id="rateType" type="text" placeholder="rateType" pInputText [(ngModel)]="invoice.rateType">
+
+
+
+    </div> -->
+
+    <div class="field col-12 md:col-6">
+      <label for="rateType">Rate Type</label>
+
+      <p-dropdown id="rateType" type="text" placeholder="Fixed Exchange Rate" [options]="ratetypes" [editable]="true"
+        optionLabel="name"></p-dropdown>
+
+    </div>
+
+
+    <!-- <div class="field col-12 md:col-6">
+      <label for="lock">Lock</label>
+
+
+      <input id="lock" type="text" placeholder="lock" pInputText [(ngModel)]="invoice.lock">
+
+
+
+    </div> -->
+
+
+
+
+
+    <div class="field col-12 md:col-6">
+      <label for="invoiceType">Invoice Type</label>
+
+
+      <input id="invoiceType" type="text" placeholder="Invoice Type" pInputText [(ngModel)]="invoice.invoiceType">
+
+
+
+    </div>
+
+
+
+    <div class="field col-12 md:col-6">
+      <label for="invoiceSummary">Invoice Summary</label>
+
+
+      <!-- <textarea rows="5" cols="30" pInputTextarea id="invoiceSummary" [(ngModel)]="invoice.invoiceSummary"
+              ></textarea> -->
+      <input id="invoiceSummary" type="text" placeholder="Invoice Summary" pInputText
+        [(ngModel)]="invoice.invoiceSummary">
+
+
+
+    </div>
+
+    <div class="field col-12 md:col-6">
+      <div class="flex align-items-center gap-1">
+<!--        <p-checkbox name="lock" value="New York" [(ngModel)]="invoice.lock" inputId="ny"></p-checkbox>-->
+          <p-checkbox
+              type="bool"
+              name="group1"
+              value="New York"
+              [(ngModel)]="invoice.lock"
+              inputId="ny"
+          ></p-checkbox>
+        <label for="ny">Lock</label>
+      </div>
+
+
+
+
+    </div>
+
+
+
+
+
+    <div class="col-12 flex justify-content-end mt-4">
+      <button pButton pRipple class="p-button-outlined w-8rem mr-3" icon="pi pi-times" label="Cancel"
+        (click)="CloseInstances()"></button>
+      <button pButton pRipple class="p-button-primary w-8rem" icon="pi pi-check" label="Save" (click)="save()"></button>
+    </div>
+  </div>
+</div>

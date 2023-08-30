@@ -1,0 +1,97 @@
+<div class="p-4">
+    <div class="grid p-fluid formgrid">
+
+
+
+        <div class="field col-12 md:col-6">
+            <label for="vendorId">vendorId</label>
+
+
+              <input id="vendorId" type="text" placeholder="vendorId" pInputText  [(ngModel)]="vendor.vendorId"
+              >
+
+
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="vendorName">vendorName</label>
+
+
+              <input id="vendorName" type="text" placeholder="vendorName" pInputText  [(ngModel)]="vendor.vendorName"
+              >
+
+
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="address">Address</label>
+
+
+              <input id="address" type="text" placeholder="address" pInputText  [(ngModel)]="vendor.address"
+               required autofocus [ngClass]="{'ng-invalid ng-dirty': submitted && !vendor.address}">
+
+
+
+                <small class="ng-dirty ng-invalid  text-red-500" *ngIf="submitted &&  !vendor.address">address is required.</small>
+                <small class="ng-dirty ng-invalid text-green-500" *ngIf="submitted &&  vendor.address">address looks good.</small>
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="city">city</label>
+
+
+              <input id="city" type="text" placeholder="city" pInputText  [(ngModel)]="vendor.city"
+               required autofocus [ngClass]="{'ng-invalid ng-dirty': submitted && !vendor.city}">
+
+
+
+                <small class="ng-dirty ng-invalid  text-red-500" *ngIf="submitted &&  !vendor.city">city is required.</small>
+                <small class="ng-dirty ng-invalid text-green-500" *ngIf="submitted &&  vendor.city">city looks good.</small>
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="country">country</label>
+
+
+              <input id="country" type="text" placeholder="country" pInputText  [(ngModel)]="vendor.country"
+               required autofocus [ngClass]="{'ng-invalid ng-dirty': submitted && !vendor.country}">
+
+
+
+                <small class="ng-dirty ng-invalid  text-red-500" *ngIf="submitted &&  !vendor.country">country is required.</small>
+                <small class="ng-dirty ng-invalid text-green-500" *ngIf="submitted &&  vendor.country">country looks good.</small>
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="notes">notes</label>
+
+            <input id="notes" type="text" placeholder="notes" pInputText  [(ngModel)]="vendor.notes"
+            >
+<!--              <textarea rows="5" cols="30" pInputTextarea id="notes" [(ngModel)]="vendor.notes"-->
+<!--              ></textarea>-->
+
+
+
+        </div>
+
+
+
+
+        <div class="col-12 flex justify-content-end mt-4">
+            <button pButton pRipple class="p-button-outlined w-8rem mr-3" icon="pi pi-times" label="Cancel"
+                    (click)="CloseInstances()"></button>
+            <button pButton pRipple class="p-button-primary w-8rem" icon="pi pi-check" label="Save"
+                    (click)="save()"></button>
+        </div>
+    </div>
+</div>

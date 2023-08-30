@@ -1,0 +1,68 @@
+<p-toast></p-toast>
+<div class="card">
+    <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+    <p-table #dt [value]="InvoiceproductData" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
+        [globalFilterFields]="['invoiceProductId','productName','quantity','unitPrice','manufacturer','description','productId',]"
+             [loading]="isDataLoading"  >
+        <ng-template pTemplate="caption">
+            <div class="flex flex-wrap gap-2 align-items-center justify-content-between">
+                <span class="p-input-icon-left w-full sm:w-20rem flex-order-1 sm:flex-order-0">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Invoiceproduct Search" class="w-full" />
+                </span>
+                <button (click)="showCreateInvoiceproductDialog()" pButton class="p-button-outlined w-full sm:w-auto flex-order-0 sm:flex-order-1" icon="pi pi-plus" label="Add Invoiceproduct"></button>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="invoiceProductId" class="white-space-nowrap" style="width:35%">Invoice Product ID<p-sortIcon field="invoiceProductId"></p-sortIcon></th>
+<th pSortableColumn="productName" class="white-space-nowrap" style="width:35%">Productname<p-sortIcon field="productName"></p-sortIcon></th>
+<th pSortableColumn="quantity" class="white-space-nowrap" style="width:35%">Quantity<p-sortIcon field="quantity"></p-sortIcon></th>
+<th pSortableColumn="unitPrice" class="white-space-nowrap" style="width:35%">Unitprice<p-sortIcon field="unitPrice"></p-sortIcon></th>
+<th pSortableColumn="manufacturer" class="white-space-nowrap" style="width:35%">Manufacturer<p-sortIcon field="manufacturer"></p-sortIcon></th>
+<th pSortableColumn="description" class="white-space-nowrap" style="width:35%">Description<p-sortIcon field="description"></p-sortIcon></th>
+<th pSortableColumn="productId" class="white-space-nowrap" style="width:35%">Product ID<p-sortIcon field="productId"></p-sortIcon></th>
+
+                <th  class="white-space-nowrap" style="width:25%">Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-InvoiceproductData>
+            <tr>
+                <td style="width:14%; min-width:10rem;">
+{{InvoiceproductData.invoiceProductId}} 
+</td>
+<td style="width:14%; min-width:10rem;">
+{{InvoiceproductData.productName}} 
+</td>
+<td style="width:14%; min-width:10rem;">
+{{InvoiceproductData.quantity}} 
+</td>
+<td style="width:14%; min-width:10rem;">
+{{InvoiceproductData.unitPrice}} 
+</td>
+<td style="width:14%; min-width:10rem;">
+{{InvoiceproductData.manufacturer}} 
+</td>
+<td style="width:14%; min-width:10rem;">
+{{InvoiceproductData.description}} 
+</td>
+<td style="width:14%; min-width:10rem;">
+{{InvoiceproductData.productId}} 
+</td>
+
+                <td>
+                    <div class="flex">
+
+                        <button pButton pRipple icon="pi pi-pencil"
+                                class="p-button-rounded p-button-primary mr-2" pTooltip="Edit"
+                                (click)="showEditInvoiceproductDialog(InvoiceproductData)"></button>
+
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                             (click)="deleteInvoiceproduct(InvoiceproductData)"   pTooltip="Delete"></button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

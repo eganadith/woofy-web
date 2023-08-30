@@ -1,0 +1,102 @@
+<div class="p-4">
+    <div class="grid p-fluid formgrid">
+
+
+
+        <div class="field col-12 md:col-6">
+            <label for="invoiceProductId">invoiceProductId</label>
+
+
+              <input id="invoiceProductId" type="text" placeholder="invoiceProductId" pInputText  [(ngModel)]="invoiceproduct.invoiceProductId"
+              >
+
+
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="productName">productName</label>
+
+
+              <input id="productName" type="text" placeholder="productName" pInputText  [(ngModel)]="invoiceproduct.productName"
+              >
+
+
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="quantity">quantity</label>
+
+
+              <p-inputNumber id="quantity" type="text" placeholder="quantity"   [(ngModel)]="invoiceproduct.quantity"
+                autofocus [ngClass]="{'ng-invalid ng-dirty': submitted && !invoiceproduct.quantity}"></p-inputNumber>
+
+
+
+                <small class="ng-dirty ng-invalid  text-red-500" *ngIf="submitted &&  !invoiceproduct.quantity">quantity is required.</small>
+                <small class="ng-dirty ng-invalid text-green-500" *ngIf="submitted &&  invoiceproduct.quantity">quantity looks good.</small>
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="unitPrice">unitPrice</label>
+
+
+              <input id="unitPrice" type="number" placeholder="unitPrice" pInputText  [(ngModel)]="invoiceproduct.unitPrice"
+              >
+
+
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="manufacturer">manufacturer</label>
+
+
+              <input id="manufacturer" type="text" placeholder="manufacturer" pInputText  [(ngModel)]="invoiceproduct.manufacturer"
+              >
+
+
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="description">description</label>
+
+
+              <input id="description" type="text" placeholder="description" pInputText  [(ngModel)]="invoiceproduct.description"
+              >
+
+
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="productId">productId</label>
+
+
+              <input id="productId" type="text" placeholder="productId" pInputText  [(ngModel)]="invoiceproduct.productId"
+              >
+
+
+
+        </div>
+
+
+
+
+        <div class="col-12 flex justify-content-end mt-4">
+            <button pButton pRipple class="p-button-outlined w-8rem mr-3" icon="pi pi-times" label="Cancel"
+                    (click)="CloseInstances()"></button>
+            <button pButton pRipple class="p-button-primary w-8rem" icon="pi pi-check" label="Save"
+                    (click)="save()"></button>
+        </div>
+    </div>
+</div>

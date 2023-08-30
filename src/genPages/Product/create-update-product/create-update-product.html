@@ -1,0 +1,101 @@
+<div class="p-4">
+    <div class="grid p-fluid formgrid">
+
+
+
+        <div class="field col-12 md:col-6">
+            <label for="productId">Product ID</label>
+
+
+              <input id="productId" type="text" placeholder="productId" pInputText  [(ngModel)]="product.productId"
+               required autofocus [ngClass]="{'ng-invalid ng-dirty': submitted && !product.productId}">
+
+
+
+                <small class="ng-dirty ng-invalid  text-red-500" *ngIf="submitted &&  !product.productId">productId is required.</small>
+                <small class="ng-dirty ng-invalid text-green-500" *ngIf="submitted &&  product.productId">productId looks good.</small>
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="productName">productName</label>
+
+
+              <input id="productName" type="text" placeholder="productName" pInputText  [(ngModel)]="product.productName"
+               required autofocus [ngClass]="{'ng-invalid ng-dirty': submitted && !product.productName}">
+
+
+
+                <small class="ng-dirty ng-invalid  text-red-500" *ngIf="submitted &&  !product.productName">productName is required.</small>
+                <small class="ng-dirty ng-invalid text-green-500" *ngIf="submitted &&  product.productName">productName looks good.</small>
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="price">price</label>
+
+
+              <p-inputNumber [(ngModel)]="product.price"  inputId="currency-us" mode="currency" currency="USD" locale="en-US"
+                autofocus [ngClass]="{'ng-invalid ng-dirty': submitted && !product.price}"></p-inputNumber>
+
+
+
+                <small class="ng-dirty ng-invalid  text-red-500" *ngIf="submitted &&  !product.price">price is required.</small>
+                <small class="ng-dirty ng-invalid text-green-500" *ngIf="submitted &&  product.price">price looks good.</small>
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="quantity">quantity</label>
+
+
+              <p-inputNumber id="quantity" type="text" placeholder="quantity"   [(ngModel)]="product.quantity"
+              ></p-inputNumber>
+
+
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="description">description</label>
+
+
+              <input id="description" type="text" placeholder="description" pInputText  [(ngModel)]="product.description"
+                autofocus [ngClass]="{'ng-invalid ng-dirty': submitted && !product.description}">
+
+
+
+                <small class="ng-dirty ng-invalid  text-red-500" *ngIf="submitted &&  !product.description">description is required.</small>
+                <small class="ng-dirty ng-invalid text-green-500" *ngIf="submitted &&  product.description">description looks good.</small>
+
+        </div>
+
+
+        <div class="field col-12 md:col-6">
+            <label for="manufacturer">manufacturer</label>
+
+
+<!--              <input id="manufacturer" type="text" placeholder="manufacturer" pInputText  [(ngModel)]="product.manufacturer"-->
+<!--              >-->
+            <p-dropdown  id="manufacturer" type="text" placeholder="manufacturer"  [editable]="true" optionLabel="name"></p-dropdown>
+
+
+
+
+        </div>
+
+
+
+
+        <div class="col-12 flex justify-content-end mt-4">
+            <button pButton pRipple class="p-button-outlined w-8rem mr-3" icon="pi pi-times" label="Cancel"
+                    (click)="CloseInstances()"></button>
+            <button pButton pRipple class="p-button-primary w-8rem" icon="pi pi-check" label="Save"
+                    (click)="save()"></button>
+        </div>
+    </div>
+</div>
